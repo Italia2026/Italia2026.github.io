@@ -1,0 +1,194 @@
+/* =========================================================
+   ITALIA 2026 — shared stylesheet for every page
+   Change a color or font here and the whole site updates.
+   ========================================================= */
+
+:root{
+  --paper:#f7f2e7;      /* warm ivory page background       */
+  --card:#fffdf8;       /* card surfaces                    */
+  --ink:#2b2420;        /* espresso text                    */
+  --muted:#7a6f60;      /* secondary text                   */
+  --line:#e6ddca;       /* hairline dividers                */
+
+  --green:#34594a;      /* cypress green — structure/hero   */
+  --green-deep:#213d33; /* darker green — footer / backdrop */
+  --gold:#c9922b;       /* golden ochre — the sun, default accent */
+
+  /* --accent is overridden per region (see body classes below) */
+  --accent:var(--gold);
+  --accent-ink:#4a3505; /* readable text on the accent      */
+
+  --radius:18px;
+  --radius-sm:12px;
+  --shadow:0 6px 22px rgba(34,61,51,.10);
+  --shadow-lg:0 18px 46px rgba(33,61,51,.20);
+  --maxw:560px;
+}
+
+/* Per-region accent colors. The <body> on each city page carries
+   one of these classes, so each place feels distinct.            */
+body.region-rome    {--accent:#b03a2e; --accent-ink:#fff;}   /* imperial red   */
+body.region-venice  {--accent:#1f6f8b; --accent-ink:#fff;}   /* adriatic blue  */
+body.region-tuscany {--accent:#5c7a3a; --accent-ink:#fff;}   /* vineyard green */
+body.region-amalfi  {--accent:#0e8a9c; --accent-ink:#fff;}   /* sea teal       */
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Inter",system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--green-deep);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Centered "page" column */
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  background:var(--paper);
+  min-height:100vh;min-height:100dvh;
+  box-shadow:0 0 60px rgba(0,0,0,.22);
+  overflow:hidden;
+}
+
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.15}
+a{color:inherit}
+.eyebrow{
+  font-family:"Inter",sans-serif;font-weight:700;font-size:.7rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+}
+
+/* ---------- HERO (home page) ---------- */
+.hero{
+  position:relative;color:#fff;
+  padding:calc(env(safe-area-inset-top) + 46px) 26px 40px;
+  /* EDIT: paste your photo URL into url("...") below to use a real
+     header image. The dark gradient keeps text readable on top.    */
+  background:
+    linear-gradient(180deg, rgba(20,40,33,.30) 0%, rgba(20,40,33,.82) 100%),
+    /* url("header.jpg"), */
+    radial-gradient(130% 100% at 75% 0%, #6ea67f 0%, #34594a 45%, #213d33 100%);
+  background-size:cover;background-position:center;
+}
+.hero .kicker{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#f0d79b;font-weight:600}
+.hero h1{font-size:2.9rem;letter-spacing:-.01em;margin:10px 0 6px}
+.hero h1 em{font-style:italic;color:#f4d79a;font-weight:500}
+.hero .dates{font-size:.98rem;color:rgba(255,255,255,.88)}
+.hero .fam{margin-top:16px;font-size:.82rem;letter-spacing:.02em;color:rgba(255,255,255,.75)}
+
+/* ---------- SUB-PAGE HEADER ---------- */
+.subhead{
+  position:relative;color:#fff;
+  padding:calc(env(safe-area-inset-top) + 20px) 24px 26px;
+  background:linear-gradient(135deg,var(--accent) 0%, rgba(0,0,0,.35) 220%);
+}
+.backlink{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.82rem;font-weight:600;text-decoration:none;color:#fff;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);
+  padding:7px 13px;border-radius:100px;margin-bottom:16px;
+}
+.subhead h1{font-size:2.2rem}
+.subhead p{font-size:.9rem;color:rgba(255,255,255,.88);margin-top:4px}
+
+/* ---------- SECTIONS ---------- */
+section{padding:26px 24px}
+.section-head{margin-bottom:16px}
+.section-head h2{font-size:1.55rem;letter-spacing:-.01em;margin-top:3px}
+.section-head p{font-size:.88rem;color:var(--muted);margin-top:3px}
+
+/* ---------- CITY BOXES (home) ---------- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.city{
+  display:block;text-decoration:none;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .14s ease, box-shadow .18s ease;
+}
+.city:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.city:active{transform:scale(.99)}
+.city .cap{
+  height:96px;display:flex;align-items:flex-end;padding:12px 14px;
+  color:#fff;font-size:1.9rem;
+}
+.city.rome .cap    {background:radial-gradient(120% 130% at 20% 0%,#d9705f,#b03a2e)}
+.city.venice .cap  {background:radial-gradient(120% 130% at 20% 0%,#4aa0bd,#1f6f8b)}
+.city.tuscany .cap {background:radial-gradient(120% 130% at 20% 0%,#8bab5e,#5c7a3a)}
+.city.amalfi .cap  {background:radial-gradient(120% 130% at 20% 0%,#3fc0cf,#0e8a9c)}
+.city .body{padding:13px 15px 16px}
+.city .body strong{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:600;display:block}
+.city .body span{font-size:.8rem;color:var(--muted)}
+.city .body .go{margin-top:8px;font-size:.78rem;font-weight:600;color:var(--accent)}
+
+/* ---------- ITINERARY TIMELINE ---------- */
+.itin{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:6px 20px 12px;
+}
+.itin ul{list-style:none;border-left:2px solid var(--line);margin-left:8px;padding-left:20px}
+.itin li{position:relative;padding:14px 0;border-bottom:1px dashed var(--line)}
+.itin li:last-child{border-bottom:none}
+.itin li::before{
+  content:"";position:absolute;left:-27px;top:19px;width:10px;height:10px;
+  border-radius:50%;background:var(--gold);border:2px solid var(--card);
+}
+.itin .date{font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--green);text-transform:uppercase}
+.itin .what{font-size:.92rem;margin-top:2px}
+
+/* ---------- RESOURCE LINKS ---------- */
+.res{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.res a{
+  display:flex;align-items:center;gap:14px;padding:16px 18px;
+  text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);
+  transition:background .14s ease;
+}
+.res a:last-child{border-bottom:none}
+.res a:hover{background:var(--paper)}
+.res a .em{font-size:1.35rem;width:26px;text-align:center}
+.res a .t{flex:1}
+.res a .t strong{display:block;font-size:.95rem;font-weight:600}
+.res a .t span{font-size:.78rem;color:var(--muted)}
+.res a .go{color:var(--muted)}
+
+/* ---------- CONTENT BLOCKS (sub-pages) ---------- */
+.block{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px;
+}
+.block h3{font-size:1.2rem;margin-bottom:6px}
+.block p{font-size:.9rem;color:var(--muted)}
+.block .todo{
+  display:inline-block;margin-top:10px;font-size:.75rem;font-weight:600;
+  color:var(--accent);background:color-mix(in srgb, var(--accent) 12%, transparent);
+  padding:5px 11px;border-radius:100px;
+}
+.block ul.plain{list-style:none;margin-top:8px}
+.block ul.plain li{padding:8px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+.block ul.plain li:last-child{border-bottom:none}
+
+/* Big call-to-action button (e.g. Splitwise) */
+.cta{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--accent);color:var(--accent-ink);text-decoration:none;
+  font-weight:700;font-size:1rem;padding:16px;border-radius:var(--radius);
+  box-shadow:var(--shadow);margin-top:6px;
+}
+.cta:active{transform:scale(.98)}
+
+/* Simple two-column phrase table */
+.phrases{width:100%;border-collapse:collapse;margin-top:8px;font-size:.9rem}
+.phrases td{padding:9px 6px;border-bottom:1px dashed var(--line);vertical-align:top}
+.phrases td:first-child{font-weight:600;width:45%}
+.phrases td:last-child{color:var(--muted)}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--green-deep);color:rgba(255,255,255,.82);text-align:center;
+  padding:30px 24px calc(env(safe-area-inset-bottom) + 34px);
+}
+footer .fn{font-family:"Fraunces",serif;font-size:1.4rem;color:#fff;margin-bottom:4px}
+footer .cr{font-size:.72rem;opacity:.6;margin-top:12px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
