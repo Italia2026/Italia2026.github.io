@@ -62,15 +62,19 @@ a{color:inherit}
 /* ---------- HERO (home page) ---------- */
 .hero{
   position:relative;color:#fff;
-  padding:calc(env(safe-area-inset-top) + 46px) 26px 40px;
-  /* EDIT: paste your photo URL into url("...") below to use a real
-     header image. The dark gradient keeps text readable on top.    */
+  min-height:360px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:calc(env(safe-area-inset-top) + 46px) 26px 34px;
+  /* Home header photo. To swap it, replace home-header.jpg in the repo,
+     or change the filename in url("...") below. The dark gradient keeps
+     the white text readable over the image.                            */
   background:
-    linear-gradient(180deg, rgba(20,40,33,.30) 0%, rgba(20,40,33,.82) 100%),
-    /* url("header.jpg"), */
+    linear-gradient(180deg, rgba(18,28,42,.34) 0%, rgba(18,28,42,.45) 45%, rgba(16,32,28,.86) 100%),
+    url("home-header.jpg"),
     radial-gradient(130% 100% at 75% 0%, #6ea67f 0%, #34594a 45%, #213d33 100%);
   background-size:cover;background-position:center;
 }
+.hero .kicker,.hero h1,.hero .dates,.hero .fam{text-shadow:0 2px 12px rgba(0,0,0,.55)}
 .hero .kicker{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#f0d79b;font-weight:600}
 .hero h1{font-size:2.9rem;letter-spacing:-.01em;margin:10px 0 6px}
 .hero h1 em{font-style:italic;color:#f4d79a;font-weight:500}
