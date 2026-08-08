@@ -234,3 +234,5 @@ footer .cr{font-size:.72rem;opacity:.6;margin-top:12px}
 }
 .note{font-size:.86rem;color:var(--muted);margin-top:8px}
 .note b{color:var(--ink)}
+
+.itin a, .block p a, .block ul.plain a{color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:2px}
