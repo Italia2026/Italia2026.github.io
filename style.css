@@ -4,15 +4,15 @@
    ========================================================= */
 
 :root{
-  --paper:#f7f2e7;      /* warm ivory page background       */
-  --card:#fffdf8;       /* card surfaces                    */
-  --ink:#2b2420;        /* espresso text                    */
-  --muted:#7a6f60;      /* secondary text                   */
-  --line:#e6ddca;       /* hairline dividers                */
+  --paper:#f4efe2;      /* warm porcelain page background    */
+  --card:#fffdf7;       /* card surfaces                     */
+  --ink:#26323f;        /* deep navy-ink text                */
+  --muted:#6c7787;      /* secondary text (cool grey)        */
+  --line:#e3ddcb;       /* hairline dividers                 */
 
-  --green:#34594a;      /* cypress green — structure/hero   */
-  --green-deep:#213d33; /* darker green — footer / backdrop */
-  --gold:#c9922b;       /* golden ochre — the sun, default accent */
+  --blue:#1e4f9c;       /* majolica cobalt — structure/hero  */
+  --blue-deep:#14356b;  /* deep cobalt — footer / backdrop   */
+  --gold:#c9922b;       /* golden ochre — the accent         */
 
   /* --accent is overridden per region (see body classes below) */
   --accent:var(--gold);
@@ -20,8 +20,8 @@
 
   --radius:18px;
   --radius-sm:12px;
-  --shadow:0 6px 22px rgba(34,61,51,.10);
-  --shadow-lg:0 18px 46px rgba(33,61,51,.20);
+  --shadow:0 6px 22px rgba(20,45,95,.12);
+  --shadow-lg:0 18px 46px rgba(18,42,95,.22);
   --maxw:560px;
 }
 
@@ -37,7 +37,7 @@ html{-webkit-text-size-adjust:100%}
 body{
   font-family:"Inter",system-ui,sans-serif;
   color:var(--ink);
-  background:var(--green-deep);
+  background:var(--blue-deep);
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
 }
@@ -56,7 +56,7 @@ h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.1
 a{color:inherit}
 .eyebrow{
   font-family:"Inter",sans-serif;font-weight:700;font-size:.7rem;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--blue);
 }
 
 /* ---------- HERO (home page) ---------- */
@@ -69,9 +69,9 @@ a{color:inherit}
      or change the filename in url("...") below. The dark gradient keeps
      the white text readable over the image.                            */
   background:
-    linear-gradient(180deg, rgba(18,28,42,.34) 0%, rgba(18,28,42,.45) 45%, rgba(16,32,28,.86) 100%),
+    linear-gradient(180deg, rgba(14,28,55,.34) 0%, rgba(14,28,55,.46) 45%, rgba(12,26,58,.86) 100%),
     url("home-header.jpg"),
-    radial-gradient(130% 100% at 75% 0%, #6ea67f 0%, #34594a 45%, #213d33 100%);
+    radial-gradient(130% 100% at 75% 0%, #4a86c9 0%, #1e4f9c 45%, #14356b 100%);
   background-size:cover;background-position:center;
 }
 .hero .kicker,.hero h1,.hero .dates,.hero .fam{text-shadow:0 2px 12px rgba(0,0,0,.55)}
@@ -85,7 +85,7 @@ a{color:inherit}
 .subhead{
   position:relative;color:#fff;
   padding:calc(env(safe-area-inset-top) + 20px) 24px 26px;
-  background:linear-gradient(135deg,var(--accent) 0%, rgba(0,0,0,.35) 220%);
+  background:linear-gradient(135deg,var(--blue) 0%, var(--blue-deep) 120%);
 }
 .backlink{
   display:inline-flex;align-items:center;gap:6px;
@@ -102,7 +102,7 @@ a{color:inherit}
   min-height:230px;
   display:flex;flex-direction:column;justify-content:flex-end;
   background-image:
-    linear-gradient(180deg, rgba(12,26,22,.15) 0%, rgba(12,26,22,.72) 78%, rgba(12,26,22,.86) 100%),
+    linear-gradient(180deg, rgba(12,22,42,.15) 0%, rgba(12,22,42,.72) 78%, rgba(12,22,42,.88) 100%),
     var(--page-img, none);
   background-size:cover;background-position:center;
 }
@@ -149,7 +149,7 @@ section{padding:26px 24px}
   content:"";position:absolute;left:-27px;top:19px;width:10px;height:10px;
   border-radius:50%;background:var(--gold);border:2px solid var(--card);
 }
-.itin .date{font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--green);text-transform:uppercase}
+.itin .date{font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--blue);text-transform:uppercase}
 .itin .what{font-size:.92rem;margin-top:2px}
 
 /* ---------- RESOURCE LINKS ---------- */
@@ -200,7 +200,7 @@ section{padding:26px 24px}
 
 /* ---------- FOOTER ---------- */
 footer{
-  background:var(--green-deep);color:rgba(255,255,255,.82);text-align:center;
+  background:var(--blue-deep);color:rgba(255,255,255,.82);text-align:center;
   padding:30px 24px calc(env(safe-area-inset-bottom) + 34px);
 }
 footer .fn{font-family:"Fraunces",serif;font-size:1.4rem;color:#fff;margin-bottom:4px}
@@ -208,3 +208,29 @@ footer .cr{font-size:.72rem;opacity:.6;margin-top:12px}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+
+/* ---------- PHRASE LISTS (phrasebook & dining) ---------- */
+.cat-label{
+  font-family:"Inter",sans-serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:2px;
+}
+.phraselist{list-style:none;margin-top:4px}
+.phraselist li{
+  padding:11px 0;border-bottom:1px dashed var(--line);
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;
+}
+.phraselist li:last-child{border-bottom:none}
+.phraselist .it{font-weight:600;font-size:.98rem;color:var(--blue)}
+.phraselist .pron{font-size:.78rem;font-style:italic;color:var(--gold)}
+.phraselist .en{width:100%;font-size:.84rem;color:var(--muted)}
+
+/* Secondary "see also" link between related pages */
+.seealso{
+  display:inline-flex;align-items:center;gap:8px;margin-top:4px;text-decoration:none;
+  font-weight:600;font-size:.9rem;color:var(--blue);
+  background:color-mix(in srgb, var(--blue) 9%, transparent);
+  border:1px solid color-mix(in srgb, var(--blue) 22%, transparent);
+  padding:12px 16px;border-radius:100px;
+}
+.note{font-size:.86rem;color:var(--muted);margin-top:8px}
+.note b{color:var(--ink)}
