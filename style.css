@@ -1,238 +1,204 @@
 /* =========================================================
-   ITALIA 2026 — shared stylesheet for every page
-   Change a color or font here and the whole site updates.
+   ITALIA 2026 — enamel-plaque reference theme
+   Cormorant Garamond + Work Sans, cobalt / ochre / porcelain.
+   Reuses existing content class names, so page content is
+   unchanged — only the look is new.
    ========================================================= */
-
 :root{
-  --paper:#f4efe2;      /* warm porcelain page background    */
-  --card:#fffdf7;       /* card surfaces                     */
-  --ink:#26323f;        /* deep navy-ink text                */
-  --muted:#6c7787;      /* secondary text (cool grey)        */
-  --line:#e3ddcb;       /* hairline dividers                 */
-
-  --blue:#1e4f9c;       /* majolica cobalt — structure/hero  */
-  --blue-deep:#14356b;  /* deep cobalt — footer / backdrop   */
-  --gold:#c9922b;       /* golden ochre — the accent         */
-
-  /* --accent is overridden per region (see body classes below) */
-  --accent:var(--gold);
-  --accent-ink:#4a3505; /* readable text on the accent      */
-
-  --radius:18px;
-  --radius-sm:12px;
-  --shadow:0 6px 22px rgba(20,45,95,.12);
-  --shadow-lg:0 18px 46px rgba(18,42,95,.22);
-  --maxw:560px;
+  color-scheme:only light;              /* opt out of browser auto-dark */
+  --porcelain:#F4F1E8; --tile:#FBFAF5;
+  --cobalt:#1C3F6E; --cobalt-deep:#13294B;
+  --ochre:#C68A1E; --pompeii:#9E3223;
+  --ink:#2A2622; --muted:#726A5C; --hair:#E3DDCF;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Work Sans",system-ui,sans-serif;
 }
-
-/* Per-region accent colors. The <body> on each city page carries
-   one of these classes, so each place feels distinct.            */
-body.region-rome    {--accent:#b03a2e; --accent-ink:#fff;}   /* imperial red   */
-body.region-venice  {--accent:#1f6f8b; --accent-ink:#fff;}   /* adriatic blue  */
-body.region-tuscany {--accent:#5c7a3a; --accent-ink:#fff;}   /* vineyard green */
-body.region-amalfi  {--accent:#0e8a9c; --accent-ink:#fff;}   /* sea teal       */
-
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
 body{
-  font-family:"Inter",system-ui,sans-serif;
-  color:var(--ink);
-  background:var(--blue-deep);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-
-/* Centered "page" column */
-.wrap{
-  max-width:var(--maxw);
-  margin:0 auto;
-  background:var(--paper);
-  min-height:100vh;min-height:100dvh;
-  box-shadow:0 0 60px rgba(0,0,0,.22);
-  overflow:hidden;
-}
-
-h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.15}
-a{color:inherit}
-.eyebrow{
-  font-family:"Inter",sans-serif;font-weight:700;font-size:.7rem;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--blue);
-}
-
-/* ---------- HERO (home page) ---------- */
-.hero{
-  position:relative;color:#fff;
-  min-height:360px;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:calc(env(safe-area-inset-top) + 46px) 26px 34px;
-  /* Home header photo. To swap it, replace home-header.jpg in the repo,
-     or change the filename in url("...") below. The dark gradient keeps
-     the white text readable over the image.                            */
+  margin:0;
   background:
-    linear-gradient(180deg, rgba(14,28,55,.34) 0%, rgba(14,28,55,.46) 45%, rgba(12,26,58,.86) 100%),
-    url("home-header.jpg"),
-    radial-gradient(130% 100% at 75% 0%, #4a86c9 0%, #1e4f9c 45%, #14356b 100%);
-  background-size:cover;background-position:center;
+    radial-gradient(circle at 12% 6%, rgba(28,63,110,.05), transparent 42%),
+    radial-gradient(circle at 88% 94%, rgba(198,138,30,.05), transparent 42%),
+    var(--porcelain);
+  color:var(--ink);font-family:var(--sans);line-height:1.45;
+  padding:2rem 1.2rem 3rem;
 }
-.hero .kicker,.hero h1,.hero .dates,.hero .fam{text-shadow:0 2px 12px rgba(0,0,0,.55)}
-.hero .kicker{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#f0d79b;font-weight:600}
-.hero h1{font-size:2.9rem;letter-spacing:-.01em;margin:10px 0 6px}
-.hero h1 em{font-style:italic;color:#f4d79a;font-weight:500}
-.hero .dates{font-size:.98rem;color:rgba(255,255,255,.88)}
-.hero .fam{margin-top:16px;font-size:.82rem;letter-spacing:.02em;color:rgba(255,255,255,.75)}
+.sheet{max-width:960px;margin:0 auto;}
+a{color:inherit;}
+h1,h2,h3{font-family:var(--serif);}
 
-/* ---------- SUB-PAGE HEADER ---------- */
-.subhead{
-  position:relative;color:#fff;
-  padding:calc(env(safe-area-inset-top) + 20px) 24px 26px;
-  background:linear-gradient(135deg,var(--blue) 0%, var(--blue-deep) 120%);
+/* ---------- shared plaque (enamel targa) ---------- */
+.plaque,
+.block>h3,.block>.cat-label{
+  display:block;background:var(--cobalt);color:var(--porcelain);
+  text-align:center;text-transform:uppercase;font-family:var(--sans);
+  font-size:.72rem;font-weight:600;letter-spacing:.24em;padding:.6rem .5rem;
+  border-radius:2px 2px 0 0;
+  box-shadow:inset 0 0 0 1px var(--cobalt),inset 0 0 0 3px var(--cobalt),inset 0 0 0 4px rgba(198,138,30,.85);
 }
-.backlink{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.82rem;font-weight:600;text-decoration:none;color:#fff;
-  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);
-  padding:7px 13px;border-radius:100px;margin-bottom:16px;
-}
-.subhead h1{font-size:2.2rem}
-.subhead p{font-size:.9rem;color:rgba(255,255,255,.88);margin-top:4px}
+.plaque .it{display:block;font-family:var(--serif);font-style:italic;text-transform:none;
+  letter-spacing:.01em;font-size:1.05rem;font-weight:500;opacity:.85;margin-top:.12rem;}
 
-/* Photo banner variant — set --page-img on the <body> to use it.
-   The dark gradient sits over the image so white text stays legible. */
-.subhead.photo{
-  min-height:230px;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  background-image:
-    linear-gradient(180deg, rgba(12,22,42,.15) 0%, rgba(12,22,42,.72) 78%, rgba(12,22,42,.88) 100%),
-    var(--page-img, none);
-  background-size:cover;background-position:center;
-}
-.subhead.photo h1,.subhead.photo p{text-shadow:0 2px 10px rgba(0,0,0,.5)}
+/* small section label */
+.lbl,.cat-label{font-family:var(--sans);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 1rem;}
 
-/* ---------- SECTIONS ---------- */
-section{padding:26px 24px}
-.section-head{margin-bottom:16px}
-.section-head h2{font-size:1.55rem;letter-spacing:-.01em;margin-top:3px}
-.section-head p{font-size:.88rem;color:var(--muted);margin-top:3px}
+/* =========================================================
+   HOME (masthead + tiles)
+   ========================================================= */
+.mast{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  padding:1.7rem 1.5rem 1.3rem;margin-bottom:1.9rem;border-bottom:2px solid var(--cobalt-deep);border-radius:4px 4px 0 0;
+  background:
+    linear-gradient(180deg, rgba(244,241,232,.56), rgba(244,241,232,.84)),
+    url("home-header.jpg");
+  background-size:cover;background-position:center 28%;}
+.mast-left{flex:1 1 320px;}
+.eyebrow{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--cobalt);font-weight:600;margin:0 0 .4rem;}
+.mast h1{font-weight:600;font-size:clamp(2.6rem,6.4vw,4rem);line-height:.96;margin:0;color:var(--cobalt-deep);letter-spacing:.005em;}
+.mast h1 .en{display:block;font-style:italic;font-weight:500;font-size:.34em;color:var(--muted);letter-spacing:.02em;margin-top:.4rem;}
+.lede{margin:.7rem 0 0;max-width:42ch;font-size:.92rem;color:var(--muted);}
+.stamp{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ochre);text-align:right;line-height:1.3;}
+.stamp b{display:block;font-style:normal;font-weight:600;letter-spacing:.02em;color:var(--cobalt);font-size:.82rem;text-transform:uppercase;font-family:var(--sans);}
 
-/* ---------- CITY BOXES (home) ---------- */
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.city{
-  display:block;text-decoration:none;color:var(--ink);
-  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  overflow:hidden;box-shadow:var(--shadow);
-  transition:transform .14s ease, box-shadow .18s ease;
-}
-.city:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-.city:active{transform:scale(.99)}
-.city .cap{
-  height:96px;display:flex;align-items:flex-end;padding:12px 14px;
-  color:#fff;font-size:1.9rem;
-}
-.city.rome .cap    {background:radial-gradient(120% 130% at 20% 0%,#d9705f,#b03a2e)}
-.city.venice .cap  {background:radial-gradient(120% 130% at 20% 0%,#4aa0bd,#1f6f8b)}
-.city.tuscany .cap {background:radial-gradient(120% 130% at 20% 0%,#8bab5e,#5c7a3a)}
-.city.amalfi .cap  {background:radial-gradient(120% 130% at 20% 0%,#3fc0cf,#0e8a9c)}
-.city .body{padding:13px 15px 16px}
-.city .body strong{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:600;display:block}
-.city .body span{font-size:.8rem;color:var(--muted)}
-.city .body .go{margin-top:8px;font-size:.78rem;font-weight:600;color:var(--accent)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:2.2rem;}
+.tile{background:var(--tile);border:1px solid var(--hair);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;}
+a.tile{text-decoration:none;color:inherit;transition:transform .12s ease,box-shadow .15s ease;}
+a.tile:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(19,41,75,.12);}
+.tile .body{padding:.9rem 1.1rem 1rem;}
+.dest-dt{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ochre);font-weight:600;}
+.dest-desc{font-family:var(--serif);font-size:1.18rem;color:var(--ink);line-height:1.25;margin:.25rem 0 .7rem;}
+.open{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--cobalt);text-decoration:none;}
+.open:hover{color:var(--pompeii);}
 
-/* ---------- ITINERARY TIMELINE ---------- */
-.itin{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow);padding:6px 20px 12px;
-}
-.itin ul{list-style:none;border-left:2px solid var(--line);margin-left:8px;padding-left:20px}
-.itin li{position:relative;padding:14px 0;border-bottom:1px dashed var(--line)}
-.itin li:last-child{border-bottom:none}
-.itin li::before{
-  content:"";position:absolute;left:-27px;top:19px;width:10px;height:10px;
-  border-radius:50%;background:var(--gold);border:2px solid var(--card);
-}
-.itin .date{font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--blue);text-transform:uppercase}
-.itin .what{font-size:.92rem;margin-top:2px}
+.full{margin-bottom:2.2rem;}
+.tl{list-style:none;margin:0;padding:1rem 1.2rem .4rem;}
+.tl li{display:grid;grid-template-columns:120px 1fr;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--hair);}
+.tl li:last-child{border-bottom:none;}
+.tl .when{font-family:var(--serif);font-style:italic;color:var(--ochre);font-size:1rem;}
+.tl .ev{font-family:var(--serif);font-weight:600;font-size:1.16rem;color:var(--cobalt-deep);line-height:1.15;}
+.tl .ev small{display:block;font-family:var(--sans);font-weight:400;font-size:.82rem;color:var(--muted);margin-top:.12rem;}
 
-/* ---------- RESOURCE LINKS ---------- */
-.res{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-.res a{
-  display:flex;align-items:center;gap:14px;padding:16px 18px;
-  text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);
-  transition:background .14s ease;
-}
-.res a:last-child{border-bottom:none}
-.res a:hover{background:var(--paper)}
-.res a .em{font-size:1.35rem;width:26px;text-align:center}
-.res a .t{flex:1}
-.res a .t strong{display:block;font-size:.95rem;font-weight:600}
-.res a .t span{font-size:.78rem;color:var(--muted)}
-.res a .go{color:var(--muted)}
+.jump{background:var(--cobalt-deep);color:var(--porcelain);border-radius:3px;padding:1.3rem 1.4rem;margin-bottom:2.2rem;}
+.jump .k{font-family:var(--serif);font-style:italic;font-size:1.6rem;display:block;margin-bottom:.15rem;}
+.jump p{margin:.1rem 0 .9rem;font-size:.88rem;opacity:.85;max-width:52ch;}
+.jump a{display:inline-block;color:var(--cobalt-deep);background:var(--ochre);text-decoration:none;font-weight:600;
+  font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1rem;border-radius:2px;}
+.jump a:hover{background:#dfa53a;}
 
-/* ---------- CONTENT BLOCKS (sub-pages) ---------- */
-.block{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px;
-}
-.block h3{font-size:1.2rem;margin-bottom:6px}
-.block p{font-size:.9rem;color:var(--muted)}
-.block .todo{
-  display:inline-block;margin-top:10px;font-size:.75rem;font-weight:600;
-  color:var(--accent);background:color-mix(in srgb, var(--accent) 12%, transparent);
-  padding:5px 11px;border-radius:100px;
-}
-.block ul.plain{list-style:none;margin-top:8px}
-.block ul.plain li{padding:8px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
-.block ul.plain li:last-child{border-bottom:none}
+.rlist{list-style:none;margin:0;padding:.2rem 1.1rem .5rem;}
+.rlist li{border-bottom:1px solid var(--hair);}
+.rlist li:last-child{border-bottom:none;}
+.rlist a{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.7rem 0;text-decoration:none;color:inherit;}
+.rlist .n{font-family:var(--serif);font-weight:600;font-size:1.24rem;color:var(--cobalt-deep);}
+.rlist .s{font-size:.8rem;color:var(--muted);text-align:right;}
+.rlist a:hover .n{color:var(--pompeii);}
 
-/* Big call-to-action button (e.g. Splitwise) */
-.cta{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  background:var(--accent);color:var(--accent-ink);text-decoration:none;
-  font-weight:700;font-size:1rem;padding:16px;border-radius:var(--radius);
-  box-shadow:var(--shadow);margin-top:6px;
+/* =========================================================
+   SUB-PAGES
+   ========================================================= */
+/* Resource-page masthead (no photo) */
+.subhead{margin-bottom:1.6rem;}
+.subhead:not(.photo){background:transparent;color:var(--ink);padding:0 0 1.1rem;border-bottom:2px solid var(--cobalt-deep);}
+.subhead:not(.photo) h1{color:var(--cobalt-deep);font-weight:600;font-size:clamp(2.3rem,6vw,3.5rem);line-height:.98;margin:.2rem 0 0;}
+.subhead:not(.photo) p{color:var(--muted);font-size:.92rem;margin:.5rem 0 0;max-width:46ch;}
+.subhead:not(.photo) .backlink{display:inline-block;margin-bottom:.9rem;font-size:.74rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;color:var(--cobalt);text-decoration:none;background:none;border:none;padding:0;}
+.subhead:not(.photo) .backlink:hover{color:var(--pompeii);}
+
+/* Masthead with a Save-as-PDF button (food & phrasebook) */
+.subhead.haspdf{display:flex;align-items:flex-end;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;}
+.subhead.haspdf .mast-left{flex:1 1 320px;}
+.print-btn{font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--porcelain);background:var(--cobalt);border:none;border-radius:2px;padding:.7rem 1.15rem;cursor:pointer;
+  box-shadow:0 0 0 3px var(--porcelain),0 0 0 4px var(--ochre);transition:background .15s ease,transform .1s ease;}
+.print-btn:hover{background:var(--cobalt-deep);}
+.print-btn:active{transform:translateY(1px);}
+.print-btn:focus-visible{outline:3px solid var(--ochre);outline-offset:4px;}
+
+/* City-page photo band */
+.subhead.photo{position:relative;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.4rem;border-radius:4px;color:#fff;
+  background-image:linear-gradient(180deg,rgba(19,41,75,.12) 0%,rgba(19,41,75,.72) 82%,rgba(19,41,75,.82) 100%),var(--page-img,none);
+  background-size:cover;background-position:center;}
+.subhead.photo h1{color:#fff;font-weight:600;font-size:clamp(2.2rem,7vw,3.4rem);text-shadow:0 2px 14px rgba(0,0,0,.45);margin:0;}
+.subhead.photo p{color:rgba(255,255,255,.92);font-size:.92rem;text-shadow:0 2px 10px rgba(0,0,0,.4);margin:.35rem 0 0;}
+.subhead.photo .backlink{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:.9rem;
+  font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#fff;text-decoration:none;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:.4rem .8rem;border-radius:2px;}
+.subhead.photo .backlink:hover{background:rgba(255,255,255,.28);}
+
+/* Content tiles */
+.block{background:var(--tile);border:1px solid var(--hair);border-radius:3px;padding:.9rem 1.1rem;margin-bottom:1.6rem;overflow:hidden;}
+.block>h3,.block>.cat-label{margin:-.9rem -1.1rem .85rem;}
+.block>p:first-of-type,.block>.note{margin-top:0;}
+.block p{font-size:.9rem;color:var(--ink);}
+.block .note{color:var(--ink);font-size:.9rem;}
+.block .note b{color:var(--cobalt);}
+
+/* Phrase lists */
+.phraselist{list-style:none;margin:0;padding:0;}
+.phraselist li{padding:.5rem 0;border-bottom:1px solid var(--hair);display:block;}
+.phraselist li:last-child{border-bottom:none;}
+.phraselist .it{font-family:var(--serif);font-weight:600;font-size:1.3rem;line-height:1.05;color:var(--cobalt-deep);}
+.phraselist .pron{font-family:var(--serif);font-style:italic;color:var(--ochre);font-size:1rem;margin-left:.15rem;}
+.phraselist .en{display:block;font-size:.82rem;color:var(--muted);margin-top:.12rem;}
+
+/* Plain checklists (reservations / packing) */
+.block ul.plain{list-style:none;margin:0;padding:0;}
+.block ul.plain li{padding:.5rem 0;border-bottom:1px solid var(--hair);font-size:.92rem;}
+.block ul.plain li:last-child{border-bottom:none;}
+
+/* Itinerary timeline (city day-by-day) */
+.itin{background:var(--tile);border:1px solid var(--hair);border-radius:3px;padding:0;overflow:hidden;margin-bottom:1.6rem;}
+.itin>.plaque{border-radius:0;}
+.itin ul{list-style:none;margin:0;padding:.25rem 1.1rem .4rem;}
+.itin li{display:grid;grid-template-columns:130px 1fr;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--hair);}
+.itin li:last-child{border-bottom:none;}
+.itin .date{font-family:var(--serif);font-style:italic;color:var(--ochre);font-size:1.02rem;}
+.itin .what{font-size:.95rem;color:var(--ink);}
+
+/* Buttons / links inside content */
+.seealso{display:inline-block;text-decoration:none;font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--porcelain);background:var(--cobalt);padding:.65rem 1rem;border-radius:2px;margin-top:.3rem;}
+.seealso:hover{background:var(--cobalt-deep);}
+.cta{display:flex;align-items:center;justify-content:center;gap:.6rem;text-decoration:none;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;font-size:.82rem;color:var(--cobalt-deep);background:var(--ochre);padding:.9rem;border-radius:2px;margin-top:.3rem;}
+.cta:hover{background:#dfa53a;}
+.itin a,.block p a,.block ul.plain a{color:var(--cobalt);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+.itin a:hover,.block p a:hover,.block ul.plain a:hover{color:var(--pompeii);}
+.airbnb-embed-frame{margin:.6rem auto !important;}
+
+/* ---------- Footer ---------- */
+footer{margin-top:1.8rem;padding-top:1rem;border-top:1px solid var(--hair);color:var(--muted);
+  font-size:.72rem;letter-spacing:.03em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
+.fn{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--cobalt-deep);}
+.cr{align-self:flex-end;}
+
+/* ---------- Tip callout ---------- */
+.tip{margin:1.6rem 0 0;padding:.95rem 1.15rem;border-left:3px solid var(--ochre);background:rgba(198,138,30,.07);
+  font-size:.88rem;color:var(--ink);}
+.tip b{color:var(--cobalt);}
+
+/* ---------- Responsive ---------- */
+@media (max-width:560px){
+  body{padding:1.4rem .9rem 2.4rem;}
+  .dgrid{grid-template-columns:1fr;}
+  .tl li,.itin li{grid-template-columns:1fr;gap:.15rem;}
+  .stamp{text-align:left;}
+  footer{gap:.2rem;}
+  .cr{align-self:flex-start;}
 }
-.cta:active{transform:scale(.98)}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+:focus-visible{outline:3px solid var(--ochre);outline-offset:3px;border-radius:2px;}
 
-/* Simple two-column phrase table */
-.phrases{width:100%;border-collapse:collapse;margin-top:8px;font-size:.9rem}
-.phrases td{padding:9px 6px;border-bottom:1px dashed var(--line);vertical-align:top}
-.phrases td:first-child{font-weight:600;width:45%}
-.phrases td:last-child{color:var(--muted)}
-
-/* ---------- FOOTER ---------- */
-footer{
-  background:var(--blue-deep);color:rgba(255,255,255,.82);text-align:center;
-  padding:30px 24px calc(env(safe-area-inset-bottom) + 34px);
+/* ---------- Print (clean PDF from any page) ---------- */
+@media print{
+  :root{--porcelain:#fff;--tile:#fff;}
+  body{padding:0;background:#fff;}
+  .backlink{display:none !important;}
+  .print-btn{display:none !important;}
+  .block,.itin,.tile,.jump{break-inside:avoid;}
+  .plaque,.block>h3,.block>.cat-label,.subhead.photo,.jump,.tip{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{margin:1.2cm;}
 }
-footer .fn{font-family:"Fraunces",serif;font-size:1.4rem;color:#fff;margin-bottom:4px}
-footer .cr{font-size:.72rem;opacity:.6;margin-top:12px}
-
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
-
-/* ---------- PHRASE LISTS (phrasebook & dining) ---------- */
-.cat-label{
-  font-family:"Inter",sans-serif;font-weight:700;font-size:.72rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:2px;
-}
-.phraselist{list-style:none;margin-top:4px}
-.phraselist li{
-  padding:11px 0;border-bottom:1px dashed var(--line);
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;
-}
-.phraselist li:last-child{border-bottom:none}
-.phraselist .it{font-weight:600;font-size:.98rem;color:var(--blue)}
-.phraselist .pron{font-size:.78rem;font-style:italic;color:var(--gold)}
-.phraselist .en{width:100%;font-size:.84rem;color:var(--muted)}
-
-/* Secondary "see also" link between related pages */
-.seealso{
-  display:inline-flex;align-items:center;gap:8px;margin-top:4px;text-decoration:none;
-  font-weight:600;font-size:.9rem;color:var(--blue);
-  background:color-mix(in srgb, var(--blue) 9%, transparent);
-  border:1px solid color-mix(in srgb, var(--blue) 22%, transparent);
-  padding:12px 16px;border-radius:100px;
-}
-.note{font-size:.86rem;color:var(--muted);margin-top:8px}
-.note b{color:var(--ink)}
-
-.itin a, .block p a, .block ul.plain a{color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:2px}
