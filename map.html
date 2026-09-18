@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="color-scheme" content="only light" />
+<title>Our Map · Italia 2026</title>
+<meta name="theme-color" content="#1C3F6E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  .mapwrap{position:relative;width:100%;height:min(72vh,560px);border:1px solid var(--hair);border-radius:3px;overflow:hidden;background:var(--tile);margin-top:1rem;}
+  .mapwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .map-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:2rem;color:var(--muted);font-size:.9rem;line-height:1.5;}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header class="subhead">
+    <a class="backlink" href="index.html">← All of Italy</a>
+    <h1>Our Map</h1>
+    <p>Every stop, sight, and reservation — pinned in one place.</p>
+  </header>
+  <section>
+    <a class="cta" id="maplink" href="https://www.google.com/maps/d/viewer" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+
+    <div class="mapwrap">
+      <iframe id="mapframe" title="Italia 2026 map" src="" loading="lazy" allowfullscreen></iframe>
+      <div class="map-fallback" id="mapfallback">Paste your Google My Maps ID into map.html to load the map here.</div>
+    </div>
+
+    <p class="note" style="margin-top:1rem"><b>On your phone,</b> tapping “Open in Google Maps” opens this custom map in the Google Maps app (or the browser), where you can get directions to any pin. Once opened, it stays under <b>Saved → Maps</b> for the rest of the trip.</p>
+  </section>
+  <footer>
+    <div class="fn">Italia 2026</div>
+    <div class="cr">La Famiglia Sinovich e Bud</div>
+  </footer>
+</main>
+
+<script>
+  /* ▼▼▼  EDIT THIS ONE LINE  ▼▼▼
+     Paste your map's ID between the quotes. It's the part after "mid="
+     in your My Maps share link, e.g. .../viewer?mid=THIS_PART&usp=sharing */
+  var MAP_ID = "1YcJlNukFLmdng5MDpiosieAlHqOV4AM";
+  /* ▲▲▲  nothing else to change  ▲▲▲ */
+
+  if (MAP_ID) {
+    document.getElementById('mapframe').src = "https://www.google.com/maps/d/embed?mid=" + MAP_ID;
+    document.getElementById('maplink').href = "https://www.google.com/maps/d/viewer?mid=" + MAP_ID;
+    var fb = document.getElementById('mapfallback'); if (fb) fb.style.display = 'none';
+  }
+</script>
+</body>
+</html>
